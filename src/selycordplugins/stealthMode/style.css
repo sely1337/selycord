@@ -1,0 +1,16 @@
+﻿/* Stealth Mode - hide Selycord plugin UI (but NOT settings access) */
+
+/* Plugin buttons: header bar, channel toolbar, chat bar, user area */
+body.Selycord-stealth .vc-header-bar-btns,
+body.Selycord-stealth .vc-channel-toolbar-btns,
+body.Selycord-stealth .vc-chat-bar-btns,
+body.Selycord-stealth .vc-user-area-btns,
+
+/* Titlebar injected elements */
+body.Selycord-stealth #Selycord-titlebar-btn,
+body.Selycord-stealth #Selycord-titlebar-link-style,
+
+/* SelycordAI nav button */
+body.Selycord-stealth .nai-nav-item {
+    display: none !important;
+}

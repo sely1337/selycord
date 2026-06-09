@@ -1,0 +1,43 @@
+/*
+ * Vencord, a Discord client mod
+ * Copyright (c) 2025 Vendicated and contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+import "./styles.css";
+
+import { definePluginSettings } from "@api/Settings";
+import { EquicordDevs } from "@utils/constants";
+import definePlugin, { OptionType } from "@utils/types";
+
+import { FloodPanelButton } from "./components/ChatBarButton";
+
+const enabled = false;
+
+const settings = definePluginSettings({
+    defaultDelay: {
+        type: OptionType.NUMBER,
+        description: "Default delay between messages (ms).",
+        default: 500
+    },
+    defaultShuffle: {
+        type: OptionType.BOOLEAN,
+        description: "Randomize message order by default.",
+        default: true
+    }
+});
+
+export { settings };
+
+export default definePlugin({
+    name: "FloodPanel",
+    description: "Send a flood of messages rapidly in any channel. Load a custom .txt file or use the built-in phrases. Accessible from the chat bar.",
+    descriptionTr: "Herhangi bir kanala hızlıca çok sayıda mesaj gönderin. Özel .txt dosyası yükleyin veya yerleşik ifadeleri kullanın. Sohbet çubuğundan erişilebilir.",
+    authors: [EquicordDevs.nobody],
+    enabledByDefault: true,
+    settings,
+
+    chatBarButton: {
+        render: FloodPanelButton
+    },
+});
