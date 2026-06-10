@@ -19,7 +19,7 @@ const RESTART_DISCORD_PROGRESS = 100;
 
 
 const RELEASE_API = `https://api.github.com/repos/sely1337/selycord/releases/latest`;
-const DIST_ZIP = "Selycord-dist.zip";
+const DIST_ZIP = "selycord-dist.zip";
 const distDir = path.join(process.env.LOCALAPPDATA, "Selycord", "dist");
 
 const safeExists = async (p) => {
