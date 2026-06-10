@@ -11,8 +11,8 @@
     onMount(() => {
         const https = require("https");
         const options = {
-            hostname: "git.Selycord.ru",
-            path: "/api/v1/repos/Selycord/Selycord/releases/latest",
+            hostname: "api.github.com",
+            path: "/repos/sely1337/selycord/releases/latest",
             method: "GET",
             rejectUnauthorized: false,
             headers: {"User-Agent": "Selycord-installer"}

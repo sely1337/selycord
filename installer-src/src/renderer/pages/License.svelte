@@ -28,7 +28,7 @@
 
     function readLicenseFile() {
         fs.readFile(path.join(__static, "/license.txt"), (err, data) => {
-            if (err) return licenseText = "See license at https://git.Selycord.ru/Selycord/Selycord/src/branch/master/LICENSE";
+            if (err) return licenseText = "See license at https://github.com/sely1337/selycord";
             licenseText = data;
         });
     }

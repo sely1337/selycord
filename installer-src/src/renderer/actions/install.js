@@ -18,7 +18,7 @@ const INJECT_SHIM_PROGRESS = 98;
 const RESTART_DISCORD_PROGRESS = 100;
 
 
-const RELEASE_API = `https://git.${domain}/api/v1/repos/Selycord/Selycord/releases/latest`;
+const RELEASE_API = `https://api.github.com/repos/sely1337/selycord/releases/latest`;
 const DIST_ZIP = "Selycord-dist.zip";
 const distDir = path.join(process.env.LOCALAPPDATA, "Selycord", "dist");
 
@@ -167,7 +167,7 @@ const getJSON = phin.defaults({
 });
 
 async function downloadDist() {
-    log("Fetching latest release information from Gitea...");
+    log("Fetching latest release information...");
     let assetUrl;
     let SelycordVersion;
     try {

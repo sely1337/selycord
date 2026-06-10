@@ -904,28 +904,8 @@
       }
     }
 
-    // Fetch latest version from Gitea and show in titlebar badge
-    async function loadLatestVersion() {
-      try {
-        const res = await fetch('https://git.Selycord.ru/api/v1/repos/Selycord/Selycord/releases/latest', {
-          headers: { 'Accept': 'application/json' }
-        });
-        if (!res.ok) return;
-        const data = await res.json();
-        const tag = data.tag_name;
-        if (tag) {
-          const el = document.getElementById('titlebar-version');
-          el.textContent = tag;
-          el.classList.add('loaded');
-        }
-      } catch (e) {
-        // silently fail â€” not critical
-      }
-    }
-
     // Init
     loadDiscords();
-    loadLatestVersion();
   </script>
 </body>
 </html>

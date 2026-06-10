@@ -2,8 +2,8 @@
     import {tooltip} from "./tooltip";
     
     const discordUrl = "https://discord.gg/Selycord";
-    const giteaUrl = "https://git.Selycord.ru/Selycord/Selycord";
-    const webUrl = "https://Selycord.ru";
+    const giteaUrl = "https://github.com/sely1337/selycord";
+    const webUrl = "https://github.com/sely1337/selycord";
 </script>
 
 <div class="social-links">

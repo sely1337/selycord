@@ -13,12 +13,12 @@ const getJSON = phin.defaults({
 
 /* eslint-disable no-console */
 export default async function () {
-    const downloadUrl = `https://git.${domain}/api/v1/repos/Selycord/Selycord/releases/latest`;
+    const downloadUrl = `https://api.github.com/repos/sely1337/selycord/releases/latest`;
     console.info(`Selycord Installer ${version}`);
 
     try {
         const response = await getJSON(downloadUrl);
-        const latestRelease = response.body[0];
+        const latestRelease = response.body;
         const latestVersion = latestRelease.tag_name;
 
         if (semverGreaterThan(latestVersion, version)) {
