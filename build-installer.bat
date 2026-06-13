@@ -10,11 +10,15 @@ cd installer-src
 echo Installer folder: %cd%
 echo.
 
-REM Clean old files
+REM Clean old files (ignore errors)
 echo Cleaning old build files...
 if exist ..\release\installer (
-    rmdir /s /q ..\release\installer
-    echo Cleaned!
+    rmdir /s /q ..\release\installer 2&gt;nul
+    if %errorlevel% equ 0 (
+        echo Cleaned!
+    ) else (
+        echo Could not clean (files in use - skipping)
+    )
 )
 echo.
 
