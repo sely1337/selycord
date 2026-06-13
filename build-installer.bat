@@ -1,79 +1,78 @@
 
 @echo off
-chcp 65001 &gt;nul
 echo ============================================
-echo   Selycord Installer Build Scripti
+echo   Selycord Installer Build Script
 echo ============================================
 echo.
 
-REM Klasöre git
+REM Go to installer folder
 cd installer-src
-echo Installer klasörüne gidildi: %cd%
+echo Installer folder: %cd%
 echo.
 
-REM Eski dosyaları temizle
-echo Eski build dosyaları temizleniyor...
+REM Clean old files
+echo Cleaning old build files...
 if exist ..\release\installer (
     rmdir /s /q ..\release\installer
-    echo Temizlendi!
+    echo Cleaned!
 )
 echo.
 
-REM Bağımlılıkları yükle
-echo Bağımlılıklar yükleniyor...
+REM Install dependencies
+echo Installing dependencies...
 call npm install --legacy-peer-deps
 if %errorlevel% neq 0 (
-    echo Hata: Bağımlılıklar yüklenemedi!
+    echo ERROR: Dependencies failed to install!
     pause
     exit /b 1
 )
 echo.
 
-REM Installer'ı build et
-echo Installer build ediliyor...
+REM Build installer
+echo Building installer...
 call npm run dist
 if %errorlevel% neq 0 (
-    echo Hata: Build başarısız!
+    echo ERROR: Build failed!
     pause
     exit /b 1
 )
 echo.
 
-REM Build klasörünü aç
-echo Build tamamlandı! Çıktı klasörü açılıyor...
+REM Open output folder
+echo Build complete! Opening output folder...
 explorer ..\release\installer
 echo.
 
-REM Git işlemleri (opsiyonel)
+REM Git operations
 echo ============================================
-echo   Git ile güncelleme
+echo   Git Update
 echo ============================================
 echo.
 cd ..
-set /p commitMsg="Commit mesajı gir (boş bırakabilirsin): "
+set /p commitMsg="Enter commit message (or leave empty): "
 if "%commitMsg%"=="" set commitMsg="Update installer"
 
-echo Değişiklikler ekleniyor...
+echo Adding changes...
 git add installer-src\package.json
 git add -u
 git commit -m "%commitMsg%"
 if %errorlevel% neq 0 (
-    echo Commit başarısız! (Zaten hiç değişiklik yok olabilir)
+    echo Commit failed (maybe no changes?)
 ) else (
     echo.
-    set /p pushNow="GitHub'a pushlansın mı? (E/H): "
-    if /i "%pushNow%"=="E" (
+    set /p pushNow="Push to GitHub? (Y/N): "
+    if /i "%pushNow%"=="Y" (
         git push
         if %errorlevel% neq 0 (
-            echo Push başarısız!
+            echo Push failed!
         ) else (
-            echo Başarılı! Installer güncellendi!
+            echo Success! Installer updated!
         )
     )
 )
 
 echo.
 echo ============================================
-echo   İşlem tamamlandı!
+echo   Done!
 echo ============================================
 pause
