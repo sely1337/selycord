@@ -18,7 +18,7 @@ export default definePlugin({
     description: "A library of themes for Vencord.",
     descriptionTr: "Vencord için bir tema kütüphanesi.",
     authors: [EquicordDevs.Fafa],
-    enabledByDefault: true,
+    enabledByDefault: false,
     required: true,
     settings,
     toolboxActions: {

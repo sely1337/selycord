@@ -102,7 +102,7 @@ export default definePlugin({
     descriptionTr: "Discord zaman damgalarını (ör. 15:31) her saniye güncellenen canlı saniyeliyle (ör. 15:34:21) değiştirir.",
     tags: ["Appearance", "Chat", "Utility"],
     authors: [{ name: "Selycord", id: 253979869n }],
-    enabledByDefault: true,
+    enabledByDefault: false,
     settings,
 
     renderTimestamp,

@@ -138,7 +138,7 @@ const guildContextPatch = (children: any, { guild }: { guild?: any; }) => {
 
 export default definePlugin({
     name: "MuteAllServers",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Right-click a server → mute all servers and mark all as read in one click.",
     descriptionTr: "Bir sunucuya sağ tıkla → tek tıkla tüm sunucuları sessize al ve okundu olarak işaretle.",
     authors: [{ name: "Selycord", id: 0n }],

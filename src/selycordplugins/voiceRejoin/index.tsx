@@ -53,7 +53,7 @@ export default definePlugin({
     description: "Rejoins DM/Server call automatically when restarting Discord.",
     descriptionTr: "Discord yeniden başlatıldığında DM/Sunucu aramasına otomatik olarak yeniden katılır.",
     authors: [EquicordDevs.omaw, EquicordDevs.keircn],
-    enabledByDefault: true,
+    enabledByDefault: false,
     settings,
 
     flux: {

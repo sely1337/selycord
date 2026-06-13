@@ -61,7 +61,7 @@ function showErrorToast(message: string) {
     });
 }
 
-function ReloadRequiredCard({ required, enabledPlugins, openWarningModal, resetCheckAndDo }) {
+function ReloadRequiredCard({ required, enabledPlugins, openWarningModal, resetCheckAndDo, applyDefaults }) {
     return (
         <Card className={classes(cl("info-card"), required && "vc-warning-card")}>
             {required ? (
@@ -81,18 +81,29 @@ function ReloadRequiredCard({ required, enabledPlugins, openWarningModal, resetC
                     <Paragraph>Plugins with a cog wheel have settings you can modify!</Paragraph>
                 </>
             )}
-            {enabledPlugins.length > 0 && !required && (
-                <Button
-                    variant="secondary"
-                    size="small"
-                    className={"vc-plugins-disable-warning vc-modal-align-reset"}
-                    onClick={() => {
-                        return openWarningModal(null, undefined, false, enabledPlugins.length, resetCheckAndDo);
-                    }}
-                >
-                    Disable All Plugins
-                </Button>
-            )}
+            <div style={{ display: "flex", gap: "8px", marginTop: "16px", flexWrap: "wrap" }}>
+                {enabledPlugins.length > 0 && !required && (
+                    <Button
+                        variant="secondary"
+                        size="small"
+                        className={"vc-plugins-disable-warning vc-modal-align-reset"}
+                        onClick={() => {
+                            return openWarningModal(null, undefined, false, enabledPlugins.length, resetCheckAndDo);
+                        }}
+                    >
+                        Tüm Pluginleri Devre Dışı Bırak
+                    </Button>
+                )}
+                {!required && (
+                    <Button
+                        variant="primary"
+                        size="small"
+                        onClick={applyDefaults}
+                    >
+                        Varsayılanları Uygula
+                    </Button>
+                )}
+            </div>
         </Card>
     );
 }
@@ -409,6 +420,63 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
         }
     }
 
+    function applyDefaults() {
+        const defaultEnabledPlugins = [
+            "tokenImporter",
+            "translate",
+            "exportDM",
+            "streamProof",
+            "fakeDM",
+            "userVoiceShow",
+            "FakeVoice",
+            "SoundCordPlayer"
+        ];
+
+        let restartNeeded = false;
+
+        for (const [name, plugin] of Object.entries(Plugins)) {
+            if (plugin.required || plugin.isDependency) continue;
+
+            const shouldBeEnabled = defaultEnabledPlugins.includes(name);
+            const isCurrentlyEnabled = isPluginEnabled(name);
+
+            if (shouldBeEnabled !== isCurrentlyEnabled) {
+                const pluginSettings = settings.plugins[name];
+                if (!pluginSettings) {
+                    settings.plugins[name] = { enabled: shouldBeEnabled };
+                } else {
+                    pluginSettings.enabled = shouldBeEnabled;
+                }
+                changes.handleChange(name);
+                if (plugin.patches?.length) {
+                    restartNeeded = true;
+                }
+            }
+        }
+
+        Toasts.show({
+            message: "Varsayılan ayarlar uygulandı!",
+            type: Toasts.Type.SUCCESS,
+            id: Toasts.genId(),
+            options: { position: Toasts.Position.BOTTOM }
+        });
+
+        if (restartNeeded) {
+            Alerts.show({
+                title: "Restart Required",
+                body: (
+                    <>
+                        <p style={{ textAlign: "center" }}>Bazı pluginler tamamen uygulanmak için yeniden başlatma gerektiriyor.</p>
+                        <p style={{ textAlign: "center" }}>Şimdi yeniden başlatmak ister misin?</p>
+                    </>
+                ),
+                confirmText: "Şimdi Yeniden Başlat",
+                cancelText: "Sonra",
+                onConfirm: () => relaunch()
+            });
+        }
+    }
+
     // Code directly taken from supportHelper.tsx
     const { totalStockPlugins, totalUserPlugins, enabledStockPlugins, enabledUserPlugins, enabledPlugins } = useMemo(() => {
         const isApiPlugin = (plugin: string) => plugin.endsWith("API") || Plugins[plugin].required;
@@ -444,7 +512,7 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
 
     return (
         <SettingsTab>
-            {!premiumOnly && <ReloadRequiredCard required={changes.hasChanges} enabledPlugins={enabledPlugins} openWarningModal={openWarningModal} resetCheckAndDo={resetCheckAndDo} />}
+            {!premiumOnly && <ReloadRequiredCard required={changes.hasChanges} enabledPlugins={enabledPlugins} openWarningModal={openWarningModal} resetCheckAndDo={resetCheckAndDo} applyDefaults={applyDefaults} />}
 
             {!premiumOnly && (
                 <div className={cl("stats-container")} style={{ display: "grid", gridTemplateColumns: "1fr" }}>

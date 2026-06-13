@@ -347,7 +347,7 @@ function MassDMButton() {
 /* ── Plugin definition ── */
 export default definePlugin({
     name: "MassDM",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Sends a message to all your friends with an anti-rate-limit delay.",
     descriptionTr: "Tüm arkadaşlarınıza hız sınırı önleyici bir gecikmeyle mesaj gönderir.",
     authors: [{ name: "Selycord", id: 0n }],

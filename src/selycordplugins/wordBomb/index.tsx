@@ -20,7 +20,7 @@ export default definePlugin({
     description: "Assistant BombParty/WordBomb avec overlay persistant, IA intégrée et alphabet track.",
     descriptionTr: "Kalıcı overlay, entegre yapay zeka ve alfabe takibi ile BombParty/WordBomb yardımcısı.",
     authors: [{ name: "Selycord", id: 0n }],
-    enabledByDefault: true,
+    enabledByDefault: false,
     dependencies: ["HeaderBarAPI"],
 
     start() {

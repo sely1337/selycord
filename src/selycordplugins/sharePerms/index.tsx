@@ -151,11 +151,7 @@ function SharePermsModal({ rootProps }: { rootProps: any; }) {
     const [, forceUpdate] = React.useReducer(x => x + 1, 0);
 
     React.useEffect(() => {
-        const timer = setInterval(() => {
-            forceUpdate();
-            setLogs(getLogs());
-        }, 1000);
-        return () => clearInterval(timer);
+        setLogs(getLogs());
     }, []);
 
     const friends = RelationshipStore.getFriendIDs().map((id: string) => UserStore.getUser(id)).filter(Boolean);
@@ -544,7 +540,7 @@ function resolveId(arg: string): string {
 
 export default definePlugin({
     name: "SharePerms",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Multi-user permission sharing with interactive UI.",
     descriptionTr: "Etkileşimli arayüzle çok kullanıcılı izin paylaşımı.",
     authors: [{ name: "Selycord", id: 0n }],

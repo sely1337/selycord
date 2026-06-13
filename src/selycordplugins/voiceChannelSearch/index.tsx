@@ -306,7 +306,7 @@ function VCSHeaderButton() {
 
 export default definePlugin({
     name: "VoiceChannelSearch",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Search and join any voice channel across all your servers.",
     descriptionTr: "Tüm sunucularınızdaki herhangi bir ses kanalını arayın ve katılın.",
     authors: [{ name: "Selycord", id: 0n }],

@@ -291,8 +291,9 @@ function RestoreIcon() {
 function RestoreButton() {
     const [active, setActive] = React.useState(!!activeFakeId);
     React.useEffect(() => {
-        const t = setInterval(() => setActive(!!activeFakeId), 300);
-        return () => clearInterval(t);
+        const handler = () => setActive(!!activeFakeId);
+        _store?.addChangeListener?.(handler);
+        return () => _store?.removeChangeListener?.(handler);
     }, []);
     if (!active) return null;
     return (
@@ -332,7 +333,7 @@ const ctxPatch: NavContextMenuPatchCallback = (children, { user }) => {
 // ── Plugin ─────────────────────────────────────────────────────────────────
 export default definePlugin({
     name: "FakeSwitcher",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Right-click → add a user to the switcher. Click in the switcher → your profile takes their appearance locally.",
     descriptionTr: "Sağ tıkla → değiştirici'ye kullanıcı ekle. Değiştirici'de tıkla → profiliniz yerel olarak o kullanıcının görünümünü alır.",
     authors: [{ name: "Selycord", id: 0n }],

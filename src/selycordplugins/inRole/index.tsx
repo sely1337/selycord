@@ -37,7 +37,7 @@ export default definePlugin({
     descriptionTr: "Rol bağlam menüsü veya /inrole komutuyla bir roldeki kullanıcıları öğrenin (eklenti bilgisini okuyun!).",
     tags: ["Commands", "Roles"],
     authors: [Devs.nin0dev],
-    enabledByDefault: true,
+    enabledByDefault: false,
     dependencies: ["UserSettingsAPI", "CommandsAPI"],
     start() {
         // DeveloperMode needs to be enabled for the context menu to be shown

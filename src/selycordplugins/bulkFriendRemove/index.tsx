@@ -212,7 +212,7 @@ function BulkFriendRemoveButton() {
 
 export default definePlugin({
     name: "BulkFriendRemove",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Delete multiple friends at once.",
     descriptionTr: "Birden fazla arkadaşı aynı anda silin.",
     authors: [{ name: "Selycord", id: 0n }],

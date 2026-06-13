@@ -14,7 +14,7 @@ import { SettingsAbout } from "./components/Modals";
 
 export default definePlugin({
     name: "IconViewer",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Adds a new tab to settings to preview all icons.",
     descriptionTr: "Tüm ikonları önizlemek için ayarlara yeni bir sekme ekler.",
     authors: [Devs.iamme],

@@ -798,7 +798,7 @@ function subscribeToEvents() {
 
 export default definePlugin({
     name: "EventLogs",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Logs: deleted/edited messages, voice, friends, servers.",
     descriptionTr: "Kaydeder: silinen/düzenlenen mesajlar, ses, arkadaşlar, sunucular.",
     authors: [{ name: "Selycord", id: 0n }],

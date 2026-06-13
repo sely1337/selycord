@@ -11,7 +11,9 @@ import { DataStore } from "@api/index";
 import { EquicordDevs } from "@utils/constants";
 import { ModalRoot, ModalSize,openModal } from "@utils/modal";
 import definePlugin, { IconComponent, PluginNative } from "@utils/types";
-import { MediaEngineStore,React, Select, useEffect, useRef, useState } from "@webpack/common";
+import { Activity } from "@vencord/discord-types";
+import { ActivityFlags, ActivityType } from "@vencord/discord-types/enums";
+import { FluxDispatcher, MediaEngineStore,React, Select, useEffect, useRef, useState } from "@webpack/common";
 
 // ─── Native (IPC → main process) ─────────────────────────────────────────────
 
@@ -237,6 +239,57 @@ const playerState = {
     subscribe(l: PlayerListener) { this.listeners.add(l); },
     unsubscribe(l: PlayerListener) { this.listeners.delete(l); },
 };
+
+// ─── Rich Presence ─────────────────────────────────────────────────────────────
+const SOCKET_ID = "SoundCordPlayer";
+let presenceInterval: NodeJS.Timeout | null = null;
+
+function setActivity(activity: Activity | null) {
+    FluxDispatcher.dispatch({ type: "LOCAL_ACTIVITY_UPDATE", activity, socketId: SOCKET_ID });
+}
+
+function updatePresence() {
+    const p = playerState;
+    if (!p.playing) {
+        setActivity(null);
+        return;
+    }
+
+    const now = Date.now();
+    const start = p.isPlaying ? now - (p.position * 1000) : undefined;
+    const end = p.isPlaying && p.duration ? now + ((p.duration - p.position) * 1000) : undefined;
+
+    const activity: Activity = {
+        application_id: "1388329101446864907", // SoundCord app ID (we can use a dummy or create one)
+        name: "SoundCord",
+        details: p.playing.title,
+        state: p.playing.artist,
+        timestamps: start && end ? { start, end } : undefined,
+        assets: {
+            large_image: p.playing.artworkUrl || "https://soundcloud.com/favicon.ico",
+            large_text: p.playing.title,
+            small_image: "https://soundcloud.com/favicon.ico",
+            small_text: "Listening via SoundCord",
+        },
+        type: ActivityType.LISTENING,
+        flags: ActivityFlags.INSTANCE,
+    };
+
+    setActivity(activity);
+}
+
+function startPresence() {
+    updatePresence();
+    presenceInterval = setInterval(updatePresence, 5000);
+}
+
+function stopPresence() {
+    if (presenceInterval) {
+        clearInterval(presenceInterval);
+        presenceInterval = null;
+    }
+    setActivity(null);
+}
 
 let playerInited = false;
 async function initPlayer() {
@@ -795,10 +848,12 @@ export default definePlugin({
     start() {
         fetchClientId().catch(() => { });
         initThumbar();
+        startPresence();
     },
 
     stop() {
         cleanupThumbar();
+        stopPresence();
         playerStop();
         playerInited = false;
     },

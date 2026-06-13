@@ -415,7 +415,7 @@ const channelContextMenuPatch: NavContextMenuPatchCallback = (children, { channe
 export default definePlugin({
     name: "ChannelWallpaper",
     authors: [Devs.rushii, Devs.Nickyux],
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Allows for custom backgrounds for every individual channel.",
     descriptionTr: "Her kanal için özel arka plan belirlemenizi sağlar.",
     settings,

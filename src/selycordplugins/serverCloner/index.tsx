@@ -673,7 +673,7 @@ const settings = definePluginSettings({
 
 export default definePlugin({
     name: "ServerCloner",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Clone an entire server (channels, roles, permissions, icon, emojis, embeds) to a server where you have ADMIN permission. Can be opened from server context menu.",
     descriptionTr: "Tüm sunucuyu (kanallar, roller, izinler, ikon, emojiler, gömmeler) ADMIN izniniz olan bir sunucuya klonlar. Sunucu bağlam menüsünden açılabilir.",
     authors: [{ name: "Selycord", id: 0n }],

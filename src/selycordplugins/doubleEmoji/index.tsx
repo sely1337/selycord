@@ -13,7 +13,7 @@ export default definePlugin({
     description: "Keeps the emoji picker open on click and highlights selected emojis with a blue border.",
     descriptionTr: "Tıklamada emoji seçiciyi açık tutar ve seçilen emojileri mavi kenarlıkla vurgular.",
     authors: [{ name: "Selycord", id: 0n }],
-    enabledByDefault: true,
+    enabledByDefault: false,
 
     start() {
         clickListener = (e: MouseEvent) => {

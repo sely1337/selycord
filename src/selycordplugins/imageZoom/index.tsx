@@ -154,7 +154,7 @@ const imageContextMenuPatch: NavContextMenuPatchCallback = (children, props) => 
 
 export default definePlugin({
     name: "ImageZoom",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Lets you zoom in to images and gifs. Use scroll wheel to zoom in and shift + scroll wheel to increase lens radius / size",
     descriptionTr: "Resimleri ve gif'leri yakınlaştırmanızı sağlar. Yakınlaştırmak için fare tekerleğini, mercek yarıçapını artırmak için Shift + fare tekerleğini kullanın.",
     tags: ["Media", "Utility"],

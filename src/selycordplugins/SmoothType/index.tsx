@@ -195,7 +195,7 @@ function removeCSS() {
 
 export default definePlugin({
     name: "SmoothType",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "The plugin allows you to fully customize the cursor caret's visual settings, including adjustable transition delays and custom CSS animation effects.",
     descriptionTr: "İmleç görsel ayarlarını tamamen özelleştirmenize izin verir; ayarlanabilir geçiş gecikmesi ve özel CSS animasyon efektleri içerir.",
     authors: [Devs.coll,Devs.viciouscal],

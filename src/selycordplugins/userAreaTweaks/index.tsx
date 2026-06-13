@@ -85,7 +85,7 @@ export default definePlugin({
     description: "Creates an elegant floating dock for Selycord plugins using pure CSS, preventing overlap and crashes.",
     descriptionTr: "Saf CSS kullanarak Selycord eklentileri için şık bir kayan dock oluşturur; çakışma ve çökmeleri önler.",
     authors: [{ name: "Selycord", id: 0n }],
-    enabledByDefault: true,
+    enabledByDefault: false,
 
     start() {
         const style = document.createElement("style");

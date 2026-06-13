@@ -159,7 +159,7 @@ const AutoCorrectChatBarButton: ChatBarButtonFactory = ({ type }) => {
 
 export default definePlugin({
     name: "AutoCorrect",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Automatically corrects spelling and grammar before sending. Requires a free Groq API key configured in SelycordAI.",
     descriptionTr: "Göndermeden önce yazım ve dilbilgisi hatalarını otomatik düzeltir. SelycordAI'da yapılandırılmış ücretsiz Groq API anahtarı gerektirir.",
     authors: [{ name: "Selycord", id: 0n }],

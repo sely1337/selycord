@@ -91,7 +91,7 @@ export default definePlugin({
     description: "Adds a button to prevent being moved or disconnected from a voice channel.",
     descriptionTr: "Ses kanalında taşınmanızı veya bağlantınızın kesilmesini önlemek için bir düğme ekler.",
     authors: [{ name: "Selycord", id: 0n }],
-    enabledByDefault: true,
+    enabledByDefault: false,
 
     userAreaButton: {
         icon: () => <AntiMoveDecoIcon enabled={enabled} />,

@@ -17,7 +17,7 @@ export function isCompactEnabled(): boolean {
 
 export default definePlugin({
     name: "CompactMode",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Hides all Selycord plugin buttons and replaces them with a single compact toggle icon. Click the icon to restore all buttons.",
     descriptionTr: "Tüm Selycord eklenti düğmelerini gizler ve tek bir kompakt simgeyle değiştirir. Tüm düğmeleri geri yüklemek için simgeye tıklayın.",
     authors: [{ name: "Selycord", id: 0n }],

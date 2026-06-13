@@ -17,7 +17,7 @@ export function isStealthEnabled(): boolean {
 
 export default definePlugin({
     name: "StealthMode",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Hides all plugin buttons without disabling them. Shortcut: Ctrl+Shift+H. The toggle is in Selycord Settings.",
     descriptionTr: "Tüm eklenti düğmelerini devre dışı bırakmadan gizler. Kısayol: Ctrl+Shift+H. Aç/kapat Selycord Ayarları'ndadır.",
     authors: [{ name: "Selycord", id: 0n }],

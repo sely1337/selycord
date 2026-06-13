@@ -666,7 +666,7 @@ export default definePlugin({
     description: "Shows the username history of a user. Right-click → PrevNames.",
     descriptionTr: "Bir kullanıcının kullanıcı adı geçmişini gösterir. Sağ tıkla → PrevNames.",
     authors: [{ name: "you", id: 0n }],
-    enabledByDefault: true,
+    enabledByDefault: false,
     dependencies: ["ContextMenuAPI"],
 
     start() {

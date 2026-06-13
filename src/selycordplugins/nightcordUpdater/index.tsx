@@ -218,7 +218,7 @@ function unmountBanner() {
 // ── Plugin ────────────────────────────────────────────────────────────────────
 export default definePlugin({
     name: "SelycordUpdater",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Shows a banner when a new Selycord version is available. Click Update to install.",
     descriptionTr: "Yeni bir Selycord sürümü kullanılabilir olduğunda bir banner gösterir. Yüklemek için Güncelle'ye tıkla.",
     authors: [{ name: "Selycord", id: 0n }],

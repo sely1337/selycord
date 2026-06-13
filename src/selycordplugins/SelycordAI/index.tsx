@@ -773,7 +773,7 @@ function SelycordAINavButton({ selected }: { selected?: boolean; }) {
 
 export default definePlugin({
     name: "SelycordAI",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "AI Chat (Groq) integrated in Discord. Replaces 'Shop' in the DM panel.",
     descriptionTr: "Discord'a entegre Yapay Zeka sohbeti (Groq). DM panelindeki 'Mağaza' bölümünün yerini alır.",
     authors: [{ name: "Selycord", id: 0n }],

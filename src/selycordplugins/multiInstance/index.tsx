@@ -555,7 +555,7 @@ function MultiInstanceButton() {
 
 export default definePlugin({
     name: "MultiInstance",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Opens a 2nd Discord (new window or split screen) with another account.",
     descriptionTr: "Başka bir hesapla 2. bir Discord penceresi açar (yeni pencere veya bölünmüş ekran).",
     authors: [{ name: "Selycord", id: 0n }],

@@ -61,7 +61,7 @@ export const cl = classNameFactory("vc-membercount-");
 
 export default definePlugin({
     name: "MemberCount",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Shows the number of online members, total members, and users in voice channels on the server — in the member list and tooltip.",
     descriptionTr: "Sunucudaki çevrimiçi üye sayısını, toplam üye sayısını ve ses kanallarındaki kullanıcıları — üye listesinde ve araç ipucunda gösterir.",
     tags: ["Servers", "Utility"],

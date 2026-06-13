@@ -101,7 +101,7 @@ const imageContextMenuPatch: NavContextMenuPatchCallback = (children, props) => 
 
 export default definePlugin({
     name: "ReverseImageSearch",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: "Adds ImageSearch to image context menus",
     descriptionTr: "Resim bağlam menülerine görsel arama seçeneği ekler.",
     authors: [Devs.Ven, Devs.Nuckyz],

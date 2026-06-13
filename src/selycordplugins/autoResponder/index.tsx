@@ -291,7 +291,7 @@ export default definePlugin({
     descriptionTr: "Yazma tarzınıza uyum sağlamak için yapay zeka kullanarak DM'lere otomatik yanıt verir.",
     authors: [{ name: "Selycord", id: 0n }],
     settings,
-    enabledByDefault: true,
+    enabledByDefault: false,
     chatBarButton: {
         icon: KeyboardIcon,
         render: AutoResponderButton,

@@ -59,7 +59,7 @@ function remove() {
 
 export default definePlugin({
     name: "TitlebarLink",
-    enabledByDefault: true,
+    enabledByDefault: false,
     description: `Click on the central Discord title to open ${domain}`,
     authors: [{ name: "Selycord", id: 0n }],
     required: true,

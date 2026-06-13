@@ -34,7 +34,7 @@ export default definePlugin({
     description: "Send a flood of messages rapidly in any channel. Load a custom .txt file or use the built-in phrases. Accessible from the chat bar.",
     descriptionTr: "Herhangi bir kanala hızlıca çok sayıda mesaj gönderin. Özel .txt dosyası yükleyin veya yerleşik ifadeleri kullanın. Sohbet çubuğundan erişilebilir.",
     authors: [EquicordDevs.nobody],
-    enabledByDefault: true,
+    enabledByDefault: false,
     settings,
 
     chatBarButton: {
